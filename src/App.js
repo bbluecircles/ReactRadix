@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './utilities/PrivateRoute';
 import AdhocIMIC from './pages/AdhocIMIC/main';
 import ESRISnapshot from './pages/ESRISnapshot/main';
@@ -9,40 +9,39 @@ import PhysicianSnapshot from './pages/PhysicianSnapshot/main';
 import RetrievePassword from './pages/RetrievePassword/main';
 import NotFound from './pages/NotFound';
 
-const App = ({ isLoggedIn }) => {
+import { isUserSignedIn} from './services/account/userService';
+
+const App = () => {
+    const isLoggedIn = isUserSignedIn();
+
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/Account/Login" Component={Login} />
-                <PrivateRoute
+        <BrowserRouter>
+            <Routes>
+                <Route exact path="/Account/Login" element={<Login />} />
+                <Route
                     exact
                     path="/"
-                    component={AdhocIMIC}
-                    isLoggedIn={isLoggedIn}
+                    element={<AdhocIMIC isLoggedIn={isLoggedIn}/>}
                 />
-                <PrivateRoute
+                <Route
                     path="/Home/Dashboard"
-                    component={ESRISnapshot}
-                    isLoggedIn={isLoggedIn}
+                    element={<ESRISnapshot isLoggedIn={isLoggedIn}/>}
                 />
-                <PrivateRoute
+                <Route
                     path="/Home/FullQueue"
-                    component={FullQueue}
-                    isLoggedIn={isLoggedIn}
+                    element={<FullQueue isLoggedIn={isLoggedIn}/>}
                 />
-                <PrivateRoute 
+                <Route
                     path="/Home/PhysicianSnapshot"
-                    component={PhysicianSnapshot}
-                    isLoggedIn={isLoggedIn}
+                    element={<PhysicianSnapshot isLoggedIn={isLoggedIn}/>}
                 />
-                <PrivateRoute
+                <Route
                     path="/Account/RetrievePassword"
-                    component={RetrievePassword}
-                    isLoggedIn={isLoggedIn}
+                    element={<RetrievePassword isLoggedIn={isLoggedIn}/>}
                 />
                 <Route Component={NotFound} />
-            </Switch>
-        </Router>
+            </Routes>
+        </BrowserRouter>
     )
 }
 

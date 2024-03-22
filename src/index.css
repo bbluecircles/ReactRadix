@@ -1,1 +1,12 @@
 @import '@radix-ui/themes/styles.css';
+
+body {
+    margin: 0;
+}
+/* Pages */
+#login-page {
+    background: url('/public/assets/images/Intellimed-BG-2019v1.png');
+    width: 100%;
+    height: 100vh;
+    background-size: 100%;
+}

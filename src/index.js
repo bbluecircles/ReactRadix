@@ -7,8 +7,7 @@ import { Theme, ThemePanel } from '@radix-ui/themes';
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
-    <Theme appearance="light" accentColor="teal" grayColor="sand" radius="small" scaling="95%">
+    <Theme appearance="light" accentColor="blue" grayColor="sand" radius="small" scaling="95%">
         <App />
-        <ThemePanel />
     </Theme>
 )

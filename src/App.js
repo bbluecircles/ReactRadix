@@ -10,6 +10,7 @@ import RetrievePassword from './pages/RetrievePassword/main';
 import NotFound from './pages/NotFound';
 
 import { isUserSignedIn} from './services/account/userService';
+import Account from './pages/Account/main';
 
 const App = () => {
     const isLoggedIn = isUserSignedIn();
@@ -17,11 +18,14 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route exact path="/Account/Login" element={<Login />} />
                 <Route
                     exact
                     path="/"
                     element={<AdhocIMIC isLoggedIn={isLoggedIn}/>}
+                />
+                <Route 
+                    path="/Account"
+                    element={<Account />}
                 />
                 <Route
                     path="/Home/Dashboard"

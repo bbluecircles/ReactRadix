@@ -20,6 +20,11 @@ import HeaderNavigation from "../../components/HeaderNavigation";
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [rememberUser, setRememberUser] = useState(true);
+
+    const forgetPasswordLinkClickEventHandler = (_) => {
+        // Navigate to page here.
+    }
 
     return (
         <main id="login-page">
@@ -32,13 +37,13 @@ const Login = () => {
                         </Box>
                         <Box>
                             <Flex direction="column" gap="4">
-                                <TextField.Input size="2" placeholder="Username" />
-                                <TextField.Input size="2" placeholder="Password" />
+                                <TextField.Input size="2" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
+                                <TextField.Input size="2" placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
                             </Flex>
                         </Box>
                         <Flex direction="column" gap="2" width="50%">
                             <Flex direction="row" gap="2" align="center">
-                                <Checkbox size="1" defaultChecked />
+                                <Checkbox size="1" defaultChecked onCheckedChange={(e) => setRememberUser(e.target.checked)}/>
                                 <Text as="span">Remember me?</Text>
                             </Flex>
                             <Button size="2" variant="solid">Login</Button>

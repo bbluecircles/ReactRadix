@@ -18,12 +18,13 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        hot: true
     },
     plugins: [
         new HtmlWebpackPlugin({

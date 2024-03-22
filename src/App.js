@@ -12,6 +12,7 @@ import NotFound from './pages/NotFound';
 import { isUserSignedIn} from './services/account/userService';
 import Account from './pages/Account/main';
 
+
 const App = () => {
     const isLoggedIn = isUserSignedIn();
 
@@ -26,7 +27,9 @@ const App = () => {
                 <Route 
                     path="/Account"
                     element={<Account />}
-                />
+                >
+                    <Route path="Login" element={<Login />} />
+                </Route>
                 <Route
                     path="/Home/Dashboard"
                     element={<ESRISnapshot isLoggedIn={isLoggedIn}/>}
